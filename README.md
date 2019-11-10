@@ -1,7 +1,7 @@
 # rust_experiments
 Experiments with Rust
 
-p. 59
+p. 75
 
 - Update de rust con "rustup update".
 - Update de IntelliJ Idea.
