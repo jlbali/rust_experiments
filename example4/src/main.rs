@@ -54,8 +54,12 @@ fn main() {
     println!("s vale {}", s);
 
     // Slices.
-
-
+    let s = String::from("hello World!");
+    let slice = &s[0..4];
+    println!("Slice vale {}", slice);
+    let first = first_word_redux(&s);
+    println!("First word is {}", first);
+    println!("2) First word is {}", first_word_redux2("goodbye people!"));
 }
 
 
@@ -94,4 +98,34 @@ fn no_dangle() -> String{
     s // PELIGRO pues s queda dealocado!
 }
 
+fn first_word(s: &String) -> usize {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate(){
+        if item == b' ' {
+            return i;
+        }
+    }
+    s.len()
+}
+
+
+fn first_word_redux(s: &String) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+    &s[..]
+}
+
+fn first_word_redux2(s: &str) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+    &s[..]
+}
 
